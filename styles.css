@@ -1,0 +1,46 @@
+
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(118, 38, 126, 0.644);
+}
+
+
+.card-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #343a40, #ff00f2);
+    color: white;
+    text-align: center;
+}
+
+
+input.form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+}
+
+input.form-control:focus {
+    border-color: #ff00ea75;
+    box-shadow: 0 0 5px rgba(247, 0, 255, 0.5);
+}
+
+
+.table-striped tbody tr:hover {
+    background-color: rgba(255, 0, 255, 0.1);
+    cursor: pointer;
+}
+
+
+.btn {
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #b300b3;
+    transform: scale(1.05);
+}
+
+
