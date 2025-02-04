@@ -1,35 +1,33 @@
-const { createApp } = Vue;
+const {createApp} = Vue;
 
 createApp({
     data() {
         return {
             alumnos: [],
+            busqueda: '', 
             codigo: '',
             nombre: '',
             direccion: '',
             municipio: '',
             departamento: '',
             telefono: '',
-            fechadenacimiento: '',
-            sexo: '',
             email: '',
-            busqueda: ''
-        };
+            fechaNacimiento: '',
+            sexo: ''
+        }
     },
     computed: {
-        alumnosFiltrados() { 
-            if (!this.busqueda) {
-                return this.alumnos;
-            }
-            return this.alumnos.filter(alumno =>
+        alumnosFiltrados() {
+            return this.alumnos.filter(alumno => 
                 alumno.nombre.toLowerCase().includes(this.busqueda.toLowerCase()) ||
-                alumno.codigo.toLowerCase().includes(this.busqueda.toLowerCase())
+                alumno.codigo.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+                alumno.email.toLowerCase().includes(this.busqueda.toLowerCase())
             );
         }
     },
     methods: {
         eliminarAlumno(alumno) {
-            if (confirm(`¿Está seguro de eliminar el alumno ${alumno.nombre}?`)) {
+            if (confirm(`¿Está seguro de eliminar el alumno ${alumno.nombre}?`)){
                 localStorage.removeItem(alumno.codigo);
                 this.listarAlumnos();
             }
@@ -41,9 +39,9 @@ createApp({
             this.municipio = alumno.municipio;
             this.departamento = alumno.departamento;
             this.telefono = alumno.telefono;
-            this.fechadenacimiento = alumno.fechadenacimiento;
-            this.sexo = alumno.sexo;
             this.email = alumno.email;
+            this.fechaNacimiento = alumno.fechaNacimiento;
+            this.sexo = alumno.sexo;
         },
         guardarAlumno() {
             let alumno = {
@@ -53,9 +51,9 @@ createApp({
                 municipio: this.municipio,
                 departamento: this.departamento,
                 telefono: this.telefono,
-                fechadenacimiento: this.fechadenacimiento,
-                sexo: this.sexo,
-                email: this.email
+                email: this.email,
+                fechaNacimiento: this.fechaNacimiento,
+                sexo: this.sexo
             };
             localStorage.setItem(this.codigo, JSON.stringify(alumno));
             this.listarAlumnos();
@@ -63,8 +61,8 @@ createApp({
         listarAlumnos() {
             this.alumnos = [];
             for (let i = 0; i < localStorage.length; i++) {
-                let clave = localStorage.key(i);
-                let valor = localStorage.getItem(clave);
+                let clave = localStorage.key(i),
+                    valor = localStorage.getItem(clave);
                 this.alumnos.push(JSON.parse(valor));
             }
         }
