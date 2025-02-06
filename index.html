@@ -41,8 +41,14 @@
                                 </div>  
                                 <div class="row p-1">
                                     <div class="col-3 col-md-2">DEPARTAMENTO</div>
+                                    <div class="col-9 col-md-4">
+                                        <input required v-model="departamento" type="text" name="txtdepartamentoAlumno" id="txtdepartamentoAlumno" class="form-control">
+                                    </div>
+                                </div> 
+                                <div class="row p-1">
+                                    <div class="col-3 col-md-2">DISTRITOS</div>
                                     <div class="col-9 col-md-4">                                       
-                                        <input required v-model="departamento" type="text" name="txtDepartamentoAlumno" id="txtDepartamentoAlumno" class="form-control">
+                                        <input required v-model="distritos" type="text" name="txtdistritosAlumno" id="txtdistritosAlumno" class="form-control">
                                     </div>
                                 <div class="row p-1">
                                     <div class="col-3 col-md-2">TELEFONO</div>
@@ -90,11 +96,11 @@
                                 <th>DIRECCION</th>
                                 <th>MUNICIPIO</th>
                                 <th>DEPARTAMENTO</th>
+                                <th>DISTRITOS</th>
                                 <th>TELEFONO</th>
                                 <th>EMAIL</th>
                                 <th>FECHA DE NACIMIENTO</th>
                                 <th>SEXO</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -104,6 +110,7 @@
                                 <td>{{ alumno.direccion }}</td>
                                 <td>{{ alumno.municipio }}</td>
                                 <td>{{ alumno.departamento }}</td>
+                                <td>{{ alumno.distritos}}</td>
                                 <td>{{ alumno.telefono }}</td>
                                 <td>{{ alumno.email }}</td>
                                 <td>{{ alumno.fechaNacimiento }}</td>
