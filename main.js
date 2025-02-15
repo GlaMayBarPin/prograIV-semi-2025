@@ -22,6 +22,7 @@ createApp({
             if (confirm(`¿Esta seguro de eliminar el alumno ${alumno.nombre}?`)){
                 db.alumnos.delete(alumno.idAlumno);
                 this.listarAlumnos();
+                alertify.success(`Alumno ${alumno.nombre} eliminado`);
             }
         },
         modificarAlumno(alumno) {
