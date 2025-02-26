@@ -1,0 +1,82 @@
+.header-section {
+    background: linear-gradient(135deg, #ba15fc 0%, #ec06847c 100%);
+    color: white;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-section img {
+    width: 100px; 
+    height: auto;
+}
+
+
+.header-section h1 {
+    flex: 1;
+    font-size: 2rem;
+    
+}
+
+.card {
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.nav-pills .nav-link.active {
+    background-color: #6a11cb;
+}
+
+.btn-primary {
+    background-color: #6a11cb;
+    border-color: #6a11cb;
+}
+
+.btn-primary:hover {
+    background-color: #7614d8;
+    border-color: #7913df;
+}
+
+.table-container {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+
+.btn-sm {
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-sm:hover {
+    transform: translateY(-2px);
+}
+
+
+@media (max-width: 768px) {
+    .header-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+    }
+    
+    .header-section img {
+        margin: 0 auto 10px;
+    }
+    
+    .card {
+        margin-bottom: 15px;
+    }
+    
+    .table-container {
+        max-height: 300px;
+    }
+}
