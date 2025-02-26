@@ -1,135 +1,261 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <title>Asistente IA</title>
+    <!-- ...existing styles... -->
 </head>
 <body>
-    <div id="app">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-8">
-                    <form id="frmAlumno" name="frmAlumno" @submit.prevent="guardarAlumno">
-                        <div class="card border-dark mb-3">
-                            <div class="card-header bg-dark text-white">Registro de Alumnos</div>
-                            <div class="card-body">
-                                <div class="row p-1">
-                                    <div class="col-3 col-md-2">CODIGO</div>
-                                    <div class="col-9 col-md-4">
-                                        <input required v-model="codigo" type="text" name="txtCodigoAlumno" id="txtCodigoAlumno" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row p-1">
-                                    <div class="col-3 col-md-2">NOMBRE</div>
-                                    <div class="col-9 col-md-6">
-                                        <input required pattern="[A-Za-zñÑáéíóú ]{3,150}" v-model="nombre" type="text" name="txtNombreAlumno" id="txtNombreAlumno" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row p-1">
-                                    <div class="col-3 col-md-2">DIRECCION</div>
-                                    <div class="col-9 col-md-8">
-                                        <input required v-model="direccion" type="text" name="txtDireccionAlumno" id="txtDireccionAlumno" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row p-1">
-                                    <div class="col-3 col-md-2">MUNICIPIO</div>
-                                    <div class="col-9 col-md-4">
-                                        <input required v-model="municipio" type="text" name="txtMunicipioAlumno" id="txtMunicipioAlumno" class="form-control">
-                                    </div>
-                                </div>  
-                                <div class="row p-1">
-                                    <div class="col-3 col-md-2">DEPARTAMENTO</div>
-                                    <div class="col-9 col-md-4">
-                                        <input required v-model="departamento" type="text" name="txtdepartamentoAlumno" id="txtdepartamentoAlumno" class="form-control">
-                                    </div>
-                                </div> 
-                                <div class="row p-1">
-                                    <div class="col-3 col-md-2">DISTRITOS</div>
-                                    <div class="col-9 col-md-4">                                       
-                                        <input required v-model="distritos" type="text" name="txtdistritosAlumno" id="txtdistritosAlumno" class="form-control">
-                                    </div>
-                                <div class="row p-1">
-                                    <div class="col-3 col-md-2">TELEFONO</div>
-                                    <div class="col-9 col-md-4">
-                                        <input v-model="telefono" type="text" name="txtTelefonoAlumno" id="txtTelefonoAlumno" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row p-1">
-                                    <div class="col-3 col-md-2">EMAIL</div>
-                                    <div class="col-9 col-md-6">
-                                        <input v-model="email" type="text" name="txtEmailAlumno" id="txtEmailAlumno" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row p-1">
-                                    <div class="col-3 col-md-2">FECHA DE NACIMIENTO</div>
-                                    <div class="col-9 col-md-4">
-                                        <input v-model="fechaNacimiento" type="date" name="txtFechaNacimientoAlumno" id="txtFechaNacimientoAlumno" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row p-1">
-                                    <div class="col-3 col-md-2">SEXO</div>
-                                    <div class="col-9 col-md-4">
-                                        <input v-model="sexo" type="text" name="txtSexoAlumno" id="txtSexoAlumno" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer bg-dark text-center">
-                                <input type="submit" value="Guardar" class="btn btn-primary"> 
-                                <input type="reset" value="Nuevo" class="btn btn-warning">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-6">
-                    <div class="row p-2">
-                        <div class="col-12">
-                            <input type="text" v-model="busqueda" placeholder="Buscar" class="form-control">
-                        </div>
-                    </div>
-                    <table class="table table-sm table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>CODIGO</th>
-                                <th>NOMBRE</th>
-                                <th>DIRECCION</th>
-                                <th>MUNICIPIO</th>
-                                <th>DEPARTAMENTO</th>
-                                <th>DISTRITOS</th>
-                                <th>TELEFONO</th>
-                                <th>EMAIL</th>
-                                <th>FECHA DE NACIMIENTO</th>
-                                <th>SEXO</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="alumno in alumnosFiltrados" @click="verAlumno(alumno)" :key="alumno.codigo">
-                                <td>{{ alumno.codigo }}</td>
-                                <td>{{ alumno.nombre }}</td>
-                                <td>{{ alumno.direccion }}</td>
-                                <td>{{ alumno.municipio }}</td>
-                                <td>{{ alumno.departamento }}</td>
-                                <td>{{ alumno.distritos}}</td>
-                                <td>{{ alumno.telefono }}</td>
-                                <td>{{ alumno.email }}</td>
-                                <td>{{ alumno.fechaNacimiento }}</td>
-                                <td>{{ alumno.sexo }}</td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm" 
-                                        @click="eliminarAlumno(alumno)">DEL</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
-        </div>
+    <h1>Asistente IA</h1>
+    <div id="chat-container"></div>
+    <div class="input-container">
+        <input type="text" id="user-input" placeholder="Hazme una pregunta...">
+        <button id="send-button">Enviar</button>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="main.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #2c0047, #530066);
+        color: #f2e9e4;
+        display: grid;
+        place-items: center;
+    }
+
+    h1 {
+        color: #fff;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        font-size: 2.8em;
+        font-weight: 300;
+        letter-spacing: 2px;
+        margin-bottom: 40px;
+    }
+    #chat-container {
+            width: 100%;
+            max-width: 1000px;
+            height: 65vh; /* Reducido de 70vh para dar más espacio arriba */
+            background: transparent;
+            padding: 30px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 20px; /* Añadido margen inferior */
+        }
+
+    #chat-container::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    #chat-container::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+
+    #chat-container::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+    }
+
+    .message {
+        padding: 15px 25px;
+        border-radius: 20px;
+        max-width: 70%;
+        line-height: 1.5;
+        font-size: 16px;
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .user-message {
+        background: linear-gradient(135deg, #9333ea, #7c3aed);
+        color: #fff;
+        margin-left: auto;
+        border-bottom-right-radius: 5px;
+        box-shadow: 0 5px 15px rgba(147, 51, 234, 0.2);
+    }
+
+    .bot-message {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        color: #fff;
+        margin-right: auto;
+        border-bottom-left-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .input-container {
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 10px; /* Reducido de 20px */
+            display: flex;
+            gap: 15px;
+            position: fixed; /* Fija la posición */
+            bottom: 40px; /* Ajusta la distancia desde abajo */
+        }
+
+    .input-container input {
+        flex: 1;
+        padding: 20px 25px;
+        border: none;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-radius: 30px;
+        font-size: 16px;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    .input-container input:focus {
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .input-container input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .input-container button {
+        padding: 20px 40px;
+        border: none;
+        background: linear-gradient(135deg, #9333ea, #7c3aed);
+        color: #fff;
+        border-radius: 30px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .input-container button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(147, 51, 234, 0.3);
+    }
+</style>
+</head>
+<body>
+    <script>
+    /// Elementos del DOM
+const chatContainer = document.getElementById('chat-container');
+const userInput = document.getElementById('user-input');
+const sendButton = document.getElementById('send-button');
+
+// Función para añadir mensajes al chat
+function addMessage(text, isUser = false) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+    messageDiv.textContent = text;
+    chatContainer.appendChild(messageDiv);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+// Configura tus credenciales de Google (reemplaza estos valores)
+const GOOGLE_API_KEY = 'AIzaS...'; // Tu API Key de Google
+const SEARCH_ENGINE_ID = '71322...'; // Tu Search Engine ID
+
+// Función para procesar respuestas
+function processResponse(snippets) {
+    if (!snippets || snippets.length === 0) return null;
+    return snippets.join('\n\n');
+
+    let processedText = combinedText
+        .replace(/\[\.\.\.\]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+        // Asegurarse de que la respuesta termine en un punto
+    if (!processedText.endsWith('.')) {
+        processedText += '.';
+    }
+
+    return processedText;
+}
+
+// Función para buscar información
+async function searchInformation(query) {
+    try {
+        const response = await fetch(
+            `https://www.googleapis.com/customsearch/v1?` +
+            `key=${GOOGLE_API_KEY}&` +
+            `cx=${SEARCH_ENGINE_ID}&` +
+            `q=${encodeURIComponent(query)}&` +
+            `num=5&` + // Obtener 5 resultados
+            `fields=items(snippet)`
+        );
+     
+
+        if (!response.ok) throw new Error('Error en la búsqueda');
+
+        const data = await response.json();
+        if (!data.items || data.items.length === 0) return null;
+
+        const snippets = data.items.map(item => item.snippet);
+        return processResponse(snippets);
+    } catch (error) {
+        console.error('Error:', error);
+        return null;
+    }  
+}
+
+
+// Función para enviar mensaje
+async function sendQuestion() {
+    const message = userInput.value.trim();
+    if (!message) return;
+
+     // Mostrar mensaje del usuario
+     addMessage(message, true);
+    userInput.value = '';
+    userInput.focus();
+
+    // Mostrar indicador de escritura
+    const typingIndicator = document.createElement('div');
+    typingIndicator.className = 'message bot-message typing';
+    typingIndicator.textContent = 'Buscando información...';
+    chatContainer.appendChild(typingIndicator);
+
+    try {
+        const answer = await searchInformation(message);
+        chatContainer.removeChild(typingIndicator);
+
+        if (answer) {
+            addMessage(answer, false);
+        } else {
+            addMessage('Lo siento, no pude encontrar información sobre eso. ¿Podrías reformular tu pregunta?', false);
+        }
+    } catch (error) {
+        chatContainer.removeChild(typingIndicator);
+        addMessage('Hubo un error al procesar tu pregunta. Por favor, intenta de nuevo.', false);
+    }
+}
+
+// Inicialización cuando el DOM está listo
+document.addEventListener('DOMContentLoaded', () => {
+    const userInput = document.getElementById('user-input');
+    const sendButton = document.getElementById('send-button');
+    // Mensaje de bienvenida
+    setTimeout(() => {
+        addMessage('¡Hola! Soy tu asistente de búsqueda inteligente. Puedo ayudarte con:\n- Programación\n- Tecnología\n- Ciencia\n- Medicina\n\n¿Qué te gustaría saber?', false);
+    }, 1000);
+
+    // Event listeners
+    sendButton.addEventListener('click', sendQuestion);
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendQuestion();
+        }
+    });
+});
+    </script>
 </body>
 </html>
