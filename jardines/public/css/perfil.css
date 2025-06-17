@@ -1,0 +1,194 @@
+/* Tipografía Arial y tamaño 18px */
+body, .perfil-card {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}
+
+/* Centrado completo */
+.perfil-wrapper {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.perfil-card {
+  background-color: #e0e0e0;
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.perfil-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+.perfil-card h2 {
+  font-size: 26px;
+  color: #6e3b28;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.perfil-card h2 span {
+  color: #7f5539;
+}
+
+.email {
+  color: #7f5539;
+  margin-bottom: 24px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+  margin-top: 12px;
+}
+
+input[type="email"],
+input[type="password"] {
+  padding: 12px 14px;
+  border: 2px solid #d4e2c3;
+  border-radius: 12px;
+  font-size: 19px;
+  background-color: #fcfcfc;
+  transition: all 0.25s ease;
+}
+
+input:focus {
+  border-color: #a3b18a;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(163, 177, 138, 0.25);
+}
+
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background-color: #a3b18a;
+  color: #fff;
+  font-size: 19px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #8c9c78;
+  transform: scale(1.04);
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-danger {
+  background-color: #e76f51;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 19px;
+  margin-top: 18px;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c74b2c;
+  transform: scale(1.03);
+}
+
+.alert {
+  padding: 14px;
+  border-radius: 10px;
+  margin: 15px 0;
+  font-size: 19px;
+  text-align: left;
+  border-left: 5px solid;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 30px 0;
+}
+
+.logout-form {
+  margin-top: 30px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .perfil-card {
+    padding: 30px 20px;
+  }
+
+  .perfil-card h2 {
+    font-size: 22px;
+  }
+
+  .formulario h3 {
+    font-size: 18px;
+  }
+
+  button {
+    font-size: 18px;
+  }
+
+  .btn-danger {
+    font-size: 18px;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    font-size: 18px;
+  }
+
+  .alert {
+    font-size: 18px;
+  }
+}
+
+/* === Ícono de puerta === */
+.back-home {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 28px;
+  color: #7f5539;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.back-home:hover {
+  background-color: #e0e0e0;
+  color: #5c4033;
+  transform: scale(1.1);
+}
